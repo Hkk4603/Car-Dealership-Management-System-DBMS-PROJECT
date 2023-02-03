@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static '/css/myacc.css' %}">
+</head>
+
+<body>
+    <nav class="navbar" id="navbar">
+        <ul class="menu nav-ele">
+            <button class="co-btn" id="ham-btn">
+                <img id="hamburger-icon" src="{% static 'img/hamburger.png' %}" alt="" />
+            </button>
+            <div class="nav-list" id="nav-list">
+                <button class="co-btn" id="close-btn">
+                    <img id="close-icon" src="{% static 'img/close.png' %}" alt="" />
+                </button>
+                <div class="acc-container">
+                    <li class="acc" id="acc"><a class="account" id="account" href="#"><img
+                                src="{% static 'img/account.png' %}" alt="account" /></a></li>
+                    <div id="acc-section" class="acc-section">
+                        {% if user.is_authenticated %}
+                        <a class="acc-link" href="#">My Account</a>
+                        <hr />
+                        <a class="acc-link" href="{% url 'logout' %}">Logout</a>
+                        {% else %}
+                        <a class="acc-link" href="{% url 'signup' %}">Signup/Login</a>
+                        {% endif %}
+                    </div>
+                </div>
+                <li class="nav-item"><a href="{% url 'models' %}">Models</a></li>
+                <li class="nav-item"><a href="#">Buy Now</a></li>
+                <li class="nav-item"><a href="#">Services</a></li>
+                <li class="nav-item"><a href="#">Finances</a></li>
+            </div>
+        </ul>
+        <a class="brand-logo nav-ele" id="brand-logo" href="{% url 'index' %}">
+            <img src="{% static 'img/bmw-logo-14.png' %}" alt="logo" />
+        </a>
+    </nav>
+
+   <p class="status">TO BE DEVELOPED</p>
+
+    <script>
+        const navbar = document.getElementById("nav-list");
+
+        const ham = document.getElementById("ham-btn");
+        const cls = document.getElementById("close-btn");
+        const navList = document.getElementById("nav-list");
+        const brandLogo = document.getElementById("brand-logo");
+
+        ham.addEventListener('click', (e) => {
+            navList.style.animation = "slideDown 1.5s forwards";
+            ham.style.opacity = 0;
+            ham.style.pointerEvents = "none";
+            cls.style.pointerEvents = "all";
+            cls.style.opacity = 1;
+            brandLogo.style.zIndex = -1;
+        })
+
+        cls.addEventListener('click', (e) => {
+            navList.style.animation = "slideUp 1.5s forwards";
+            ham.style.opacity = 1;
+            cls.style.opacity = 0;
+            cls.style.pointerEvents = "none";
+            ham.style.pointerEvents = "all";
+            brandLogo.style.zIndex = 0;
+        })
+
+        const accSec = document.getElementById("acc-section");
+        const acc = document.getElementById("account");
+        var flag = 0;
+        acc.addEventListener('click', (e) => {
+            console.log('clicked');
+            if (flag === 0) {
+                accSec.style.animation = "accSecSlideDown 1s forwards";
+                accSec.style.pointerEvents = "all";
+                flag = 1;
+            } else {
+                accSec.style.animation = "accSecSlideUp 1s forwards";
+                accSec.style.pointerEvents = "none";
+                flag = 0;
+            }
+        })
+    </script>
+</body>
+
+</html>

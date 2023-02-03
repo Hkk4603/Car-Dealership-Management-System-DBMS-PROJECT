@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static '/css/admincus.css' %}">
+</head>
+
+<body>
+    <nav class="navbar" id="navbar">
+        <ul class="menu nav-ele">
+            <button class="co-btn" id="ham-btn">
+                <img id="hamburger-icon" src="{% static 'img/hamburger.png' %}" alt="" />
+            </button>
+            <div class="nav-list" id="nav-list">
+                <button class="co-btn" id="close-btn">
+                    <img id="close-icon" src="{% static 'img/close.png' %}" alt="" />
+                </button>
+                <div class="acc-container">
+                    <li class="acc" id="acc"><a class="account" id="account" href="#"><img
+                                src="{% static 'img/account.png' %}" alt="account" /></a></li>
+                    <div id="acc-section" class="acc-section">
+                        {% if user.is_authenticated %}
+                        {% if user.is_superuser %}
+                        <a class="acc-link" href="{% url 'adminpg' %}">Admin Acc</a>
+                        {% else %}
+                        <a class="acc-link" href="{% url 'myacc' %}">My Account</a>
+                        {% endif %}
+                        <hr />
+                        <a class="acc-link" href="{% url 'logout' %}">Logout</a>
+                        {% else %}
+                        <a class="acc-link" href="{% url 'signup' %}">Signup/Login</a>
+                        {% endif %}
+                    </div>
+                </div>
+                <li class="nav-item"><a href="{% url 'models' %}">Models</a></li>
+                <li class="nav-item"><a href="#">Buy Now</a></li>
+                <li class="nav-item"><a href="#">Services</a></li>
+                <li class="nav-item"><a href="#">Finances</a></li>
+            </div>
+        </ul>
+        <a class="brand-logo nav-ele" id="brand-logo" href="{% url 'index' %}">
+            <img src="{% static 'img/bmw-logo-14.png' %}" alt="logo" />
+        </a>
+    </nav>
+
+    <div class="container">
+        <div class="options-container">
+            <div class="options">
+                <li><a href="{% url 'adminpg' %}">Users</a></li>
+            </div>
+            <hr>
+            <div class="options">
+                <li><a href="{% url 'admincus' %}">Customer Details</a></li>
+            </div>
+            <hr>
+            <div class="options">
+                <li><a href="{% url 'carmodels' %}">Vehicle Models</a></li>
+            </div>
+            <hr>
+            <div class="options">
+                <li><a href="{% url 'bookingDetails' %}">Booking Details</a></li>
+            </div>
+            <hr>
+            <div class="options">
+                <li><a href="{% url 'bookingDetails' %}">Billing</a></li>
+            </div>
+            <hr>
+        </div>
+        <div class="container-main">
+            <div class="results-container">
+                <div class="operations">
+                    <div class="operationsBtn">
+                        <button class="opbtn" id="addBtn">Add</button>
+                        <button class="opbtn" id="delBtn">Delete</button>
+                        <button class="opbtn" id="updateBtn">Update</button>
+                    </div>
+                    <div >
+                        <form action="{% url 'admincus' %}" method="POST" class="search-con" id="searchBtn">
+                            {% csrf_token %}
+                            <input type="text" name="search" placeholder="Search" id="searchVal">
+                            <button type="submit" >
+                                <img src="{% static './img/search-icon.png' %}" alt="search" />
+                            </button>
+                        </form>
+                    </div>     
+                </div>
+                <div class="msg-con">
+                    {% for message in messages %}
+                    <h3 class="msg">*{{ message }}</h3>
+                    {% endfor %}
+                </div>
+                <div class="table">
+
+                    <table>
+                        <tr class="attr">
+                            {% for field in cusAttr  %}
+                            <th>{{ field }}</th>
+                            {% endfor %}
+                        </tr>
+                        {% for tuple in cusRows %}
+                        <tr>
+                            <td>{{ tuple.cust_id}}</td>
+                            <td>{{ tuple.name }}</td>
+                            <td>{{ tuple.gender }}</td>
+                            <td>{{ tuple.dob }}</td>
+                            <td>{{ tuple.email }}</td>
+                            <td>{{ tuple.address }}</td>
+                            <td>{{ tuple.occupation }}</td>
+                            {% if tuple.active %}
+                            <td>True</td>
+                            {% else %}
+                            <td>False</td>
+                            {% endif %}
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="operator-forms-container" id="addFormContainer">
+        <form action="{% url 'addCus' %}" method="POST" id="formAdd">
+            {% csrf_token %}
+            <div id="clsWht" class="cls-wht">
+                <a href="#"><img src="{% static './img/close-wht.png' %}" alt="close" /></a>
+            </div>
+            <input type="text" name="cust_id" placeholder="Customer-Id" required>
+            <input type="text" name="name" placeholder="Name" required>
+            <input type="text" name="gender" placeholder="Gender" required>
+            <label for="" class="label">DOB:</label> 
+            <input type="date" name="dob" placeholder="DOB" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="text" name="address" placeholder="Address" required>
+            <input type="text" name="occupation" placeholder="Occupation" required>
+            <input type="text" name="active" placeholder="Active" required>
+            <button type="submit" value="" class="btn-update">Update</button>
+        </form>
+    </div>
+
+    <div class="operator-forms-container" id="delFormContainer">
+        <form action="{% url 'delCus' %}" method="POST" id="formDel">
+            {% csrf_token %}
+            <div id="clsWht" class="cls-wht">
+                <a href="#"><img src="{% static './img/close-wht.png' %}" alt="close" /></a>
+            </div>
+            <input type="text" name="cust_id" placeholder="Customer-Id" required>
+            <button type="submit" value="" class="btn-update">Update</button>
+        </form>
+    </div>
+
+    <div class="operator-forms-container" id="updateFormContainer">
+        <form action="{% url 'uptCus' %}" method="POST" id="formUpdate">
+            {% csrf_token %}
+            <div id="clsWht" class="cls-wht">
+                <a href="#"><img src="{% static './img/close-wht.png' %}" alt="close" /></a>
+            </div>
+            <input type="text" name="cust_id" placeholder="Customer_ID" required>
+            <input type="text" name="update_field" placeholder="Update Field" required>
+            <input type="text" name="value" placeholder="Update Value" required>
+            <button type="submit" value="" class="btn-update">Update</button>
+        </form>
+    </div>
+
+    <script src="{% static '/js/admincus.js' %}"></script>
+</body>
+
+</html>

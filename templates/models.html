@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'css/models.css' %}" />
+        <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+        <title>Models</title>
+        <style>
+            #navbar{
+                pointer-events: all;
+            }
+
+            #acc-section{
+                border: 2px solid #6767946a; 
+                width: 200px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <nav class="navbar" id="navbar">
+            <ul class="menu nav-ele">
+                <button class="co-btn" id="ham-btn">
+                    <img id="hamburger-icon" src="{% static 'img/hamburger.png' %}" alt="" />
+                </button>
+                <div class="nav-list" id="nav-list">
+                    <button class="co-btn" id="close-btn">
+                        <img id="close-icon"  src="{% static 'img/close.png' %}" alt="" />
+                    </button>
+                    <div class="acc-container">
+                        <li class="acc" id="acc"><a href="#" class="account" id="account"><img src="{%static 'img/account.png' %}" alt="account"></a></li>
+                        <div class="acc-section" id="acc-section">
+                            {% if user.is_authenticated %}
+                            <a class="acc-link" href="#">My Account</a>
+                            <hr />
+                            <a class="acc-link" href="{% url 'logout' %}">Logout</a>
+                            {% else %}
+                            <a class="acc-link" href="{% url 'signup' %}">Signup/Login</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <li class="nav-item"><a href="{% url 'models' %}">Models</a></li>
+                    <li class="nav-item"><a href="#">Buy Now</a></li>
+                    <li class="nav-item"><a href="#">Services</a></li>
+                    <li class="nav-item"><a href="#">Finances</a></li>
+                </div>
+            </ul>
+            <a class="brand-logo nav-ele" id="brand-logo" href="{% url 'index' %}">
+                <img  src="{% static 'img/bmw-logo-14.png' %}" alt="logo" />
+            </a>
+        </nav>
+        <section class="models-container">
+            <div class="models-header">
+                <h1>FINE YOUR BMW.</h1>
+                <h2>FILTER</h2>
+                <p class="more-filters"><span>></span><a href="#">Show more filters</a></p>
+                <p class="availability"><span>9</span> vehicles found</p>
+            </div>
+            <div class="models-menu">
+                <div class="models-menu-item"><li><a href="#bmwi">BMWi</a></li></div>
+                <div class="models-menu-item"><li><a href="#x">X</a></li></div>
+                <div class="models-menu-item"><li><a href="#m">M</a></li></div>
+                <div class="models-menu-item"><li><a href="#seven">7</a></li></div>       
+            </div>
+            <hr />
+            <div class="models">
+                <div class="bmwi models-card" id="bmwi">
+                    <div class="model-name">
+                        <h1>BMWi</h1>
+                    </div>
+                    <div class="cards bmwi-card">
+                        <a href="{% url 'carpg' %}" target="blank">
+                            <img src="{% static 'img/models/bmwix.png' %}" alt="bmw71" >
+                            <div class="cards-bg-electrical">
+                                <img src="{% static 'img/models/electric.png' %}" alt="">
+                            </div>
+                            <div class="model-desc">
+                                <h2>BMW iX</h2>
+                                <p class="fuel-type">FULL-ELECTRIC</p>
+                                <p class="pricing">> Starting from <span>₹11,800,000</span></p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="cards bmwi-card">
+                        <a href="{% url 'carpg' %}" target="blank">
+                            <img src="{% static 'img/models/bmwi4.png' %}" alt="bmw72" >
+                            <div class="cards-bg-electrical">
+                                <img src="{% static 'img/models/electric.png' %}" alt="">
+                            </div>
+                            <div class="model-desc">
+                                <h2>BMW i4</h2>
+                                <p class="fuel-type">FULL-ELECTRIC</p>
+                                <p class="pricing">> Starting from <span>₹10,800,000</span></p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="x models-card" id="x" data-aos="fade-left">
+                    <div class="model-name">
+                        <h1>X</h1>
+                    </div>
+                    <div class="cards x-card">
+                        <a href="{% url 'carpg' %}" target="blank">
+                            <img src="{% static 'img/models/bmwx7.png' %}" alt="bmwx7" >
+                            <div class="model-desc">
+                                <h2>BMW X7</h2>
+                                <p class="fuel-type">PETROL . DIESEL</p>
+                                <p class="pricing">> Starting from <span>₹11,790,000</span></p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="cards x-card">
+                        <a href="{% url 'carpg' %}" target="blank">
+
+                            <img src="{% static 'img/models/bmwx5.png' %}" alt="bmwx5">
+                            <div class="model-desc">
+                                <h2>BMW X5</h2>
+                                <p class="fuel-type">PETROL . DIESEL</p>
+                                <p class="pricing">> Starting from <span>₹7,990,000</span></p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="cards x-card">
+                        <a href="{% url 'carpg' %}" target="blank">
+
+                            <img src="{% static 'img/models/bmwx5.png' %}" alt="bmwx5">
+                            <div class="model-desc">
+                                <h2>BMW X5</h2>
+                                <p class="fuel-type">PETROL . DIESEL</p>
+                                <p class="pricing">> Starting from <span>₹7,990,000</span></p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="cards x-card">
+                        <a href="{% url 'carpg' %}" target="blank">
+
+                            <img src="{% static 'img/models/bmwx5.png' %}" alt="bmwx5">
+                            <div class="model-desc">
+                                <h2>BMW X5</h2>
+                                <p class="fuel-type">PETROL . DIESEL</p>
+                                <p class="pricing">> Starting from <span>₹7,990,000</span></p>
+                            </div>
+                        </a>
+                    </div>
+
+                </div>
+                <div class="m models-card" id="m" data-aos="fade-right">
+                    <div class="model-name">
+                        <h1>M</h1>
+                    </div>
+                    <div class="cards m-card">
+                        <a href="{% url 'carpg' %}" target="blank">
+
+                            <img src="{% static 'img/models/bmwm8.png' %}" alt="bmwm" >
+                            <div class="model-desc">
+                                <h2>BMW M8</h2>
+                                <p class="fuel-type">PLUG-IN HYBRID</p>
+                                <p class="pricing">> Starting from <span>₹26,000,000</span></p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="cards m-card">
+                        <a href="{% url 'carpg' %}" target="blank">
+
+                            <img src="{% static 'img/models/bmwm4.png' %}" alt="bmwm4">
+                            <div class="model-desc">
+                                <h2>BMW M4</h2>
+                                <p class="fuel-type">PETROL . DIESEL</p>
+                                <p class="pricing">> Starting from <span>₹14,390,000</span></p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="seven models-card" id="seven" data-aos="fade-left">
+                    <div class="model-name">
+                        <h1>3</h1>
+                    </div>
+                    <div class="cards 3-card">
+                        <a href="{% url 'carpg' %}" target="blank">
+
+                            <img src="{% static 'img/models/bmw31.png' %}" alt="bmw71" >
+                            <div class="model-desc">
+                                <h2>BMW 3 Series Gran</h2>
+                                <p class="fuel-type">PETROL . DIESEL</p>
+                                <p class="pricing">> Starting from <span>₹6,800,000</span></p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="cards 3-card">
+                        <a href="{% url 'carpg' %}" target="blank">
+
+                            <img src="{% static 'img/models/bmw32.png' %}" alt="bmw72">
+                            <div class="model-desc">
+                                <h2>BMW 3</h2>
+                                <p class="fuel-type">PETROL . DIESEL</p>
+                                <p class="pricing">> Starting from <span>₹7,800,000</span></p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <script>
+                const navbar = document.getElementById("nav-list");
+
+                const ham = document.getElementById("ham-btn");
+                const cls = document.getElementById("close-btn");
+                const navList = document.getElementById("nav-list"); 
+                const brandLogo = document.getElementById("brand-logo");
+
+                ham.addEventListener('click', (e) => {
+                    navList.style.animation = "slideDown 1.5s forwards"; 
+                    ham.style.opacity = 0; 
+                    ham.style.pointerEvents = "none"; 
+                    cls.style.pointerEvents = "all"; 
+                    cls.style.opacity = 1;  
+                    brandLogo.style.zIndex = -1; 
+                })
+
+                cls.addEventListener('click', (e) => {
+                    navList.style.animation = "slideUp 1.5s forwards"; 
+                    ham.style.opacity = 1; 
+                    cls.style.opacity = 0; 
+                    cls.style.pointerEvents = "none"; 
+                    ham.style.pointerEvents = "all"; 
+                    brandLogo.style.zIndex = 0; 
+                })
+
+                const accSec = document.getElementById("acc-section");
+                const acc = document.getElementById("account");
+                var flag = 0;
+                acc.addEventListener('click', (e) => {
+                    console.log('clicked');
+                    if (flag === 0) {
+                        accSec.style.animation = "accSecSlideDown 1s forwards";
+                        accSec.style.pointerEvents = "all";
+                        flag = 1;
+                    } else {
+                        accSec.style.animation = "accSecSlideUp 1s forwards";
+                        accSec.style.pointerEvents = "none";
+                        flag = 0;
+                    }
+                })
+        </script>
+        <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+        <script>
+          AOS.init({
+            offset: 300,
+            duration: 2000, 
+          });
+        </script>
+    </body>
+</html>

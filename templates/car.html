@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'css/car.css' %}" />
+        <title>Car</title>
+        <style>
+            #navbar{
+                pointer-events: all;
+            }
+
+            #acc-section{
+                border: 2px solid #6767946a; 
+                width: 200px;
+            }
+        </style>
+    </head>
+    <body>
+        <nav class="navbar" id="navbar">
+            <ul class="menu nav-ele">
+                <button class="co-btn" id="ham-btn">
+                    <img id="hamburger-icon" src="{% static 'img/hamburger.png' %}" alt="" />
+                </button>
+                <div class="nav-list" id="nav-list">
+                    <button class="co-btn" id="close-btn">
+                        <img id="close-icon"  src="{% static 'img/close.png' %}" alt="" />
+                    </button>
+                    <div class="acc-container">
+                        <li class="acc" id="acc"><a href="#" class="account" id="account"><img src="{%static 'img/account.png' %}" alt="account"></a></li>
+                        <div class="acc-section" id="acc-section">
+                            {% if user.is_authenticated %}
+                            <a class="acc-link" href="#">My Account</a>
+                            <hr />
+                            <a class="acc-link" href="{% url 'logout' %}">Logout</a>
+                            {% else %}
+                            <a class="acc-link" href="{% url 'signup' %}">Signup/Login</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <li class="nav-item"><a href="{% url 'models' %}">Models</a></li>
+                    <li class="nav-item"><a href="#">Buy Now</a></li>
+                    <li class="nav-item"><a href="#">Services</a></li>
+                    <li class="nav-item"><a href="#">Finances</a></li>
+                </div>
+            </ul>
+            <a class="brand-logo nav-ele" id="brand-logo" href="{% url 'index' %}">
+                <img  src="{% static 'img/bmw-logo-14.png' %}" alt="logo" />
+            </a>
+        </nav>
+
+        <section class="hero">
+            <div class="hero-bg-img">
+                <img src="{% static 'img/popular-bg1.jpg' %}" alt="bg">
+            </div>
+            <div class="hero-container1">
+                <p> BOSS EVERY ROAD</p>
+                <p>THE BMW M5</p>
+                <button class="hero-btn blue-btn">Configure & Price</button>
+                <button class="hero-btn gray-btn">Buy Now</button>
+            </div>
+
+            <div class="hero-container2">
+                <div class="hero-container2-div price">
+                    <p>₹9,990,000</p>
+                    <p>Starting from</p>
+                </div>
+                <div class="hero-container2-div milage">
+                    <p>11.24</p>
+                    <p>Fuel Consumption in Km/l</p>
+                </div>
+                <div class="hero-container2-div fuel-type">
+                    <p>Petrol, Diesel</p>
+                    <p>Engine and Fuel Type</p>
+                </div>
+            </div>
+        </section>  
+        <section class="content">
+            <div class="description">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam incidunt illum molestiae, pariatur accusamus dolor. Quia voluptatum maiores, voluptatibus quos placeat consequatur dolores recusandae totam. Necessitatibus voluptatum laudantium, unde sint dolor sit vel voluptatem rerum veniam perferendis modi officiis cupiditate aliquam totam, accusamus deserunt temporibus vero ullam earum quod suscipit tenetur deleniti? Incidunt repudiandae, quasi explicabo fugiat tempore voluptatem. Rerum ratione totam esse odio sit, aut quaerat quasi. Non at praesentium ipsa soluta earum atque, corrupti impedit qui saepe perferendis voluptas quos animi, sunt iusto consequatur esse pariatur quas? Culpa, adipisci non? Provident, commodi? Aliquam ex eaque aspernatur totam obcaecati!
+            </div>
+
+            <div class="carousel-container">
+                <div class="left-arrow-container">
+                    <img id="left-arrow" src="{% static 'img/left-arrow.png' %}" onclick="goleft()"  alt="go-right">
+                </div>
+                <div class="carousel" id="carousel">
+                    <div class="img-container" id="img-container">
+                        <img class="img" src="{% static 'img/models/bmwx7.png' %}" alt="">
+                        <img class="img" src="{% static 'img/models/bmwm8.png' %}" alt="">
+                        <img class="img" src="{% static 'img/models/bmwx5.png' %}" alt="">
+                    </div>
+                </div>
+                <div class="right-arrow-container">
+                    <img id="right-arrow" src="{% static 'img/right-arrow.png' %}" onclick="goright()" alt="go-left">
+                </div>
+            </div>
+        </section>
+
+        <section class="btm-nav-container">
+            <div class="btm-nav">
+                <!-- color of icons used in this section #4d4c4c -->
+                <li>
+                    <a href="#" class="btm-nav-link">
+                        <img src="{% static 'img/cart-icon.png' %}" alt="cart">
+                        <p>Buy Online</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="btm-nav-link">
+                        <img src="{% static 'img/testdrive-icon.png' %}" alt="cart">
+                        <p>Book a Test Drive</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="btm-nav-link">
+                        <img src="{% static 'img/location-icon.png' %}" alt="cart">
+                        <p>Find a Dealer</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="btm-nav-link">
+                        <img src="{% static 'img/offers-icon.png' %}" alt="cart">
+                        <p>Current Offers</p>
+                    </a>
+                </li>
+            </div>
+        </section>
+        <script src="{% static '/js/car.js' %}"></script>
+    </body>
+</html>

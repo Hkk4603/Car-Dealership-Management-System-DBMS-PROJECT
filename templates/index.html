@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <title>Demo</title>
+</head>
+
+<body>
+    <nav class="navbar" id="navbar">
+        <ul class="menu nav-ele">
+            <button class="co-btn" id="ham-btn">
+                <img id="hamburger-icon" src="{% static 'img/hamburger.png' %}" alt="" />
+            </button>
+            <div class="nav-list" id="nav-list">
+                <button class="co-btn" id="close-btn">
+                    <img id="close-icon"  src="{% static 'img/close.png' %}" alt="" />
+                </button>
+                <div class="acc-container">
+                    <li class="acc" id="acc"><a class="account" id="account" href="#"><img src="{% static 'img/account.png' %}" alt="account" /></a></li>
+                    <div id="acc-section" class="acc-section">
+                        {% if user.is_authenticated %}
+                            {% if user.is_superuser %}    
+                            <a class="acc-link" href="{% url 'adminpg' %}">Admin Acc</a>
+                            {% else %}
+                            <a class="acc-link" href="{% url 'myacc' %}">My Account</a>
+                            {% endif %}
+                        <hr />
+                        <a class="acc-link" href="{% url 'logout' %}">Logout</a>
+                        {% else %}
+                        <a class="acc-link" href="{% url 'signup' %}">Signup/Login</a>
+                        {% endif %}
+                    </div>
+                </div>
+                <li class="nav-item"><a href="{% url 'models' %}">Models</a></li>
+                <li class="nav-item"><a href="#">Buy Now</a></li>
+                <li class="nav-item"><a href="#">Services</a></li>
+                <li class="nav-item"><a href="#">Finances</a></li>
+            </div>
+        </ul>
+        <a class="brand-logo nav-ele" id="brand-logo" href="{% url 'index' %}">
+            <img  src="{% static 'img/bmw-logo-14.png' %}" alt="logo" />
+        </a>
+    </nav>
+    <section class="hero" id="hero">
+        <div class="pow-img-container" id="pow-container">
+            <div class="pow-img" id="pow-img">
+                <a>
+                    <img src="{% static 'img/power-on-off.png' %}" alt="power-on-off">
+                </a>
+            </div>
+        </div>
+    
+        <div class="hero-content">
+            <h1>THE FIRST-EVER <br />BMW XM</h1>
+            <button class="btn">Know More</button>
+        </div>
+
+    </section>
+    <div class="more-hero">
+        <div class="more-hero-ele more-hero1">
+            <div class="more-hero-body">
+                <div class="more-hero-content1">
+                    <p>NEW LAUNCH</p>
+                    <button class="btn">BUY NOW</button>
+                </div>
+            </div>
+        </div>
+        <div class="more-hero-ele more-hero2">
+            <div class="more-hero-body">
+                <div class="more-hero-content2">
+                    <p>EXPRIENCE THE </br>ULTIMATE SPEED</p>
+                    <button class="btn">BUY NOW</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- BODY SECTION  -->
+
+    <section class="popular-container" id="popular-container">
+        <p>POPULAR PURCHASES</p>
+        <div class="popular" id="popular">
+            <div class="card" id="card1">
+                <div class="card-img">
+                    <img src="{% static 'img/card.jpg' %}" alt="card-img">
+                </div>
+                <button class="card-btn">Configure Now</button>
+                <div class="features">
+                    <ul class="features-list">
+                        <li>
+                            <img class="check-box-img" src="{% static 'img/check.png' %}" alt="check-box">
+                            <p>Sporty, progressive exterior design</p>
+                        </li>
+                        <li>
+                            <img class="check-box-img" src="{% static '/img/check.png' %}" alt="check-box">
+                            <p>BMW TwinPower Turbo 2.0-liter 4-cylinder 190-HP diesel engine</p>
+                        </li>
+                        <li>
+                            <img class="check-box-img" src="{% static 'img/check.png' %}" alt="check-box">
+                            <p>Uncompromising, performance-oriented aesthetics</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card" id="card2">
+                <div class="card-img">
+                    <img src="{% static 'img/card2.jpg' %}" alt="card-img">
+                </div>
+                <button class="card-btn">Configure Now</button>
+                <div class="features">
+                    <ul class="features-list">
+                        <li>
+                            <img class="check-box-img" src="{% static 'img/check.png' %}" alt="check-box">
+                            <p>7-Speed Steptronic Sport Transmission with double cluth</p>
+                        </li>
+                        <li>
+                            <img class="check-box-img" src="{% static 'img/check.png' %}" alt="check-box">
+                            <p>Central Information Display with 6.5"(16.5cm) screen</p>
+                        </li>
+                        <li>
+                            <img class="check-box-img" src="{% static 'img/check.png' %}" alt="check-box">
+                            <p>Dynamic Stability Control(DSC)</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card" id="card3">
+                <div class="card-img">
+                    <img src="{% static 'img/card.jpg' %}" alt="card-img">
+                </div>
+                <button class="card-btn">Configure Now</button>
+                <div class="features">
+                    <ul class="features-list">
+                        <li>
+                            <img class="check-box-img" src="{% static 'img/check.png' %}" alt="check-box">
+                            <p>Best-in-class Comfort</p>
+                        </li>
+                        <li>
+                            <img class="check-box-img" src="{% static 'img/check.png' %}" alt="check-box">
+                            <p>BMW TwinPower Turbo 2.0-liter 4-Cylinder 258-HP Petrol engine</p>
+                        </li>
+                        <li>
+                            <img class="check-box-img" src="{% static 'img/check.png' %}" alt="check-box">
+                            <p>Launch Control Mode</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="services-container">
+        <div class="services">
+            <div class="service1 service-cards">
+                <img src="{% static 'img/service1.jpg' %}" alt="service">
+                <div class="service-description">
+                    <h1>BMW USED CARDS</h1>
+                    <hr />
+                    <p>Finding just the BMW Premium Selection vehicle you are looking for is easy. With our online search, you will be able to find cars by model.</p>
+                    <a href="#" class="service-description-links"><span>></span> Browse the complete range</a>
+                </div>
+            </div>
+            
+            <div class="service2 service-cards">
+                <img src="{% static 'img/service2.jpg' %}" alt="service">
+                <div class="service-description">
+                    <h1>BMW ONLINE SHOP</h1>
+                    <hr />
+                    <a href="#" class="service-description-links service-description-link-special"><span>></span> Know More</a>
+                </div>
+            </div>
+            
+            <div class="service3 service-cards">
+                <img src="{% static 'img/service3.jpg' %}" alt="service">
+                <div class="service-description">
+                    <h1>BMW FINANCIAL SERVICES</h1>
+                    <hr />
+                    <p>Your new BMW is within reach. All you need is the perfect financial solution with tailor-made finance options.</p>
+                    <a href="#" class="service-description-links"><span>></span> Find out more</a>
+                </div>
+            </div>
+
+            <div class="service4 service-cards">
+                <img src="{% static 'img/service4.jpg' %}" alt="service">
+                <div class="service-description">
+                    <h1>BMW EXCELLENCE CLUB</h1>
+                    <hr />
+                    <p>A members-only platform that curates tailored experiences from the world of luxury, travel, lifestyle, and sports. BMW Excellence Club is a harmonious mélange of the finest luxuries and lifestyle privileges from around the world.</p>
+                    <a href="#" class="service-description-links"> <span>></span> Explore More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        
+    </footer>
+
+    <script src="{% static '/js/index.js' %}"></script>
+</body>
+
+</html>

@@ -1,0 +1,575 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@600&display=swap'); 
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap');
+
+
+:root{
+    --primary-font: bmwTypeNextWeb,Arial,Helvetica,sans-serif;
+    --secondary-font: 'Source Sans Pro', sans-serif; 
+    --hero-font: 'Roboto', sans-serif;
+}
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+a{
+    text-decoration: none;
+}
+
+li{
+    list-style-type: none;
+}
+
+/*--------------------------------------------------NAVBAR------------------------------------------*/
+
+.btn{
+    color: white;
+    font-weight: bolder;
+    font-size: 23px;
+    height: 55px;
+    width: 20%;
+    background-color: #1c69d4;
+    border: none;
+    transition: background-color 0.5s ease-out;
+    cursor: pointer;
+}
+
+button{
+    cursor: pointer;
+}
+
+.btn:hover{
+    background-color: #569cff;
+}
+
+/*------------------------------------------------NAVBAR-------------------------------------------------------------*/
+#navbar {
+    font-family: var(--primary-font); 
+    height: 5rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-bottom: 15px ;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    background-color: #ffffff5c;
+}
+
+.nav-ele{
+    height: 100%;
+}
+
+.nav-list{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    /* border: 2px solid green; */
+    /* margin-left: 50px; */
+    width: 700px;
+}
+
+.nav-item{
+    /* border: 2px solid red; */
+    height: 100%;
+    transition: 0.5s;
+    padding-top: 20px;
+}
+
+.nav-item a{
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    /* border: 2px solid red; */
+    
+}
+
+.nav-item a::after{
+    content: '';
+    width: 0%;
+    height: 3px;
+    background-color: #262626;
+    display: block;
+    margin: 0 auto;
+    margin-top: 15px;
+    transition: 0.5s;
+}
+
+.nav-item a:hover::after{
+    width: 100%;
+}
+
+.navbar ul{
+    width: 50%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    list-style: none;
+    /* border: 2px solid green;  */
+    font-size: larger;
+}
+
+/*MODIFIED*/
+.brand-logo{
+    margin-top: 5px;
+    border: none;
+    background: transparent;
+}
+
+.brand-logo img{
+    height: 100%;
+}
+
+/*---------------------accSection------------------------*/
+.acc-container{
+    position: relative;
+}
+
+.account{
+    width: 20px;
+    height: 20px;
+}
+
+.account img{
+    width: 40px;
+    height: 40px;
+    margin: auto 0px;
+}
+
+.acc-section{
+    background: #ffffff;
+    padding: 35px 15px;
+    border-radius: 5px;
+    height: 100px; 
+    position: absolute;
+    bottom: 0;
+    left: -70px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.acc-section hr{
+    height: 5px;
+    width: 80%;
+}
+
+.acc-link{
+    /* border: 2px solid red; */
+    color: black;
+    margin: 15px;
+}
+
+/*---------------------accSection end------------------------*/
+
+
+@keyframes slideDown{
+    from{
+        opacity: 0;
+        transform: translateY(-240px);
+    }
+
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideUp{
+    from{
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    to{
+        opacity: 0;
+        transform: translateY(-240px);
+    }
+}
+
+@keyframes accSecSlideDown {
+    from{
+        opacity: 0;
+        transform: translateY(0px);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(110px);
+    }
+}
+
+@keyframes accSecSlideUp {
+    from{
+        opacity: 1;
+        transform: translateY(110px);
+    }
+    to{
+        opacity: 0;
+        transform: translateY(0px);
+    }
+}
+
+.co-btn{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 60px;
+    display: none;
+    background-color: transparent;
+    border: none;
+}
+
+#hamburger-icon{
+    width: 100%;
+}
+
+#close-icon{
+    width: 100%;
+}
+
+@media screen and (max-width: 850px) {
+        #pow-container{
+            display: none;
+        }
+
+        a{
+        cursor: pointer;
+        text-decoration: none;
+        color: black;
+       }
+       /*---------------accSection-------------*/
+
+       #acc{
+        border: none;
+       }
+
+       .acc-container{
+        border: none;
+        position: relative;
+       }
+
+       .acc-section{
+        position: absolute;
+        left: -50px;
+       }
+       /*----------------accSection end----------*/
+       
+       #navbar{
+        pointer-events: all;
+       }
+
+       .navbar{
+            /* border: 2px solid red; */
+           position: relative;
+           width: 100%;
+           display: flex;
+           justify-content: space-around;    
+           background: transparent;
+       }
+       
+       .nav-list li{
+           list-style: none;
+       }
+       
+       .co-btn{
+           display: inline;
+           cursor: pointer;
+           width: 40px;
+           background: transparent;
+           border: none;
+       }
+       
+       .co-btn img{
+           width: 100%;
+       }
+       
+       #ham-btn{
+        position: absolute;
+        top: 30%;
+        left: 10%;
+        z-index: 4;
+       }
+       
+       #close-btn{
+        position: absolute;
+        top: 10%;
+        left: 10%;
+        opacity: 0;
+       }
+       
+       .brand-logo{
+           margin: 0;
+           width:max-content;
+           height: 80px;
+           border: none;
+           background: transparent;
+           cursor: pointer;
+           position: absolute;
+           top: 5px;
+           right: 10%;
+       }
+       
+       .brand-logo img{
+           width: 100%;
+       }
+
+       .nav-list{
+            padding: 20px;
+            width: 100vw;
+           height: max-content;
+           display: flex;
+           flex-direction: column;
+           align-items: center;
+           justify-content: space-around;
+           background: #ffffff8c;
+           opacity: 0;
+           position: absolute; 
+           top: 0;
+           left: 0;
+       }
+       
+       .nav-list li{
+           width: 20%;
+           padding: 15px;
+           margin: 3px;
+           text-align: center;
+           border-bottom: 2px solid gray;
+       }
+
+}
+
+/*----------------------------Styling for carpg------------------------------*/
+
+
+/*-----------------------------------HERO Section--------------------------*/
+.hero{
+    width: 100%;
+    height: 87vh;
+    position: relative;
+}
+
+.hero-bg-img{
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.hero-bg-img img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hero-container1{
+    position: absolute;
+    top: 7.5rem;
+    left: 4rem;
+    color: white;
+    font-family: var(--hero-font);
+    font-weight: 300;
+    display: flex;
+    flex-direction: column;
+}
+
+.hero-container1 > p:first-child    {
+    font-size: 50px;
+}
+
+.hero-container1 > p:nth-child(2){
+    font-size: 30px;
+    margin: 15px 0px;
+}
+
+.hero-container1 button{
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    width: 300px;
+    height: 50px;
+    margin: 5px 0px;
+    border: none;
+}
+
+.gray-btn{
+    color: white;
+    background-color: #4d4c4c;
+}
+
+.gray-btn:hover{
+    background-color: #262626;
+}
+
+.blue-btn{
+    color: white;
+    background-color: #1c69d4
+}
+
+.blue-btn:hover{
+    background-color: #569cff;
+}
+
+.hero-container2{
+    width: 60%;
+    height: 200px;
+    padding: 20px 0px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: white;
+    font-family: var(--hero-font);
+}
+
+.hero-container2-div > p:first-child{
+    font-size: 35px;
+    margin: 5px 0px;
+}
+
+.hero-container2-div > p:nth-child(2){
+    font-size: 18px;
+}
+
+/*----------------------------------content------------------------------------------*/
+
+.content{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 50px 0px;
+    font-family: 'Poppins';
+    color: #4d4c4c;
+}
+
+.description{
+    width: 80%;
+}
+
+/*---------------------------------------carousel----------------------------------------------*/
+.carousel-container{
+    position: relative; 
+    margin: 100px 0px 0px;
+}
+
+.left-arrow-container{
+    width: 80px;
+    position: absolute;
+    top: 50%;
+    left: -100px;
+    transform: translateY(-50%);
+}
+
+.left-arrow-container img{
+    width: 100%;
+}
+
+.left-arrow-container img:hover{
+    cursor: pointer;    
+}
+
+.right-arrow-container{
+    width: 80px;
+    position: absolute;
+    top: 50%;
+    right: -100px;
+    transform: translateY(-50%);
+}
+
+.right-arrow-container img{
+    width: 100%;
+}
+
+.right-arrow-container img:hover{
+    cursor: pointer;
+}
+
+.carousel{
+    width: 800px;
+    height: 500px;
+    overflow: hidden;
+}
+
+.img-container{
+    width: 800px;
+    height: 500px;
+    display: flex;
+    position: relative;
+    transition: all 0.7s; 
+}
+
+.img-container img{
+    width: 800px;
+    height: 100%;
+    display: inline-block;
+    object-fit: contain;
+}
+
+
+
+/*-----------------------------------Bottom Navbar--------------------------------------------*/
+.btm-nav-container{
+    width: 100%;
+    height: 10vh;
+    background-color: white;
+    position: sticky;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top: 2px solid #c0c0c0;
+}
+
+.btm-nav{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.btm-nav li{
+    text-align: center;
+    width: 120px;
+    height: 100%;
+    padding-top: 5px;
+}
+
+.btm-nav li:hover{
+    border-top: 5px solid #1c69d4;
+}
+
+.btm-nav li > a{
+    width: 100%;
+    height: 100%;
+    font-family: var(--primary-font);
+    color: #4d4c4c;
+}
+
+.btm-nav li > a >img{
+    width: 30px;
+    height: 30px;
+}
+
+.btm-nav li > a p{
+    font-size: small;
+    font-weight: bold;
+}
+
